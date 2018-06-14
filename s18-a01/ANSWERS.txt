@@ -1,0 +1,17 @@
+1. How many employees does the city have?
+33183
+
+2. How many full-time workers are there in the file?
+31090
+
+3. How many part-time workers are there in the file?
+2093
+
+4. How many people work for the police department?
+13891
+
+5. How many of them are detectives?
+989
+
+6. Which department has the most employees?
+Police
