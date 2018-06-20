@@ -1,4 +1,4 @@
-# Q7: How big is the largest department? Which one is it?
+# Q6: How big is the largest department? Which one is it?
 import helper
 
 data = helper.read_salaries()

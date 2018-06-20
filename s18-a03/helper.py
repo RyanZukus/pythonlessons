@@ -5,19 +5,29 @@
 def read_salaries():
 	file = open('salaries.csv')
 	salaries = []
+	first = True
 	for line in file:
-		fields = line[:-1].split(',')
-		salary = fields[-2]
-		hourly = fields[-1]
+		if first:
+			first = False
+		else:
+			fields = line[:-1].split(',')
 
-		if len(salary) > 0 and salary[0] == "$":
-			fields[-2] = float(salary[1:])
-		if len(hourly) > 0 and hourly[0] == "$":
-			fields[-1] = float(hourly[1:])
+			# Strip leading dollar signs from salary/rates
+			fields[-2] = fields[-2].lstrip("$")
+			fields[-1] = fields[-1].lstrip("$")
 
-		salaries.append(fields)
+			# Strip leading quote from surname
+			fields[0] = fields[0].lstrip('"')
 
-	salaries.pop(0)
+			# Strip leading whitespace, trailing quote, and middle names
+			name = fields[1]
+			name = name.lstrip()
+			name = name.rstrip('"')
+			name = name.split(' ')
+			fields[1] = name[0]
+
+			salaries.append(fields)
+
 	return(salaries)
 
 # A.2: Given a 2d list data and an integer column_index 
@@ -33,7 +43,7 @@ def get_column(data, column_index):
 def count(values, search_value):
 	count = 0
 	for value in values:
-		if value == search_value:
+		if search_value in value: # check for substrings
 			count += 1
 	return count
 

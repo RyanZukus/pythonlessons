@@ -2,3 +2,4 @@
 import helper
 
 data = helper.read_salaries()
+print(len(data))
